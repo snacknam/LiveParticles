@@ -1,10 +1,4 @@
-// main.js
-// import * as THREE from 'https://unpkg.com/three@0.140.0/build/three.module.js';
-
-///////////////
-// 설정 변수들 //
-///////////////
-const BACKGROUND_COLOR = '#EFF2F6';
+const BACKGROUND_COLOR = '#FFFFFF';
 const NORMAL_COLOR_HEX = '#2B7FFF';
 
 const GLOW_COLOR_HEX     = '#FF6900';
@@ -19,10 +13,7 @@ const GLOW_HOLD_DURATION = 3000;   // full opacity hold
 const MIN_INTERVAL = 1000;
 const MAX_INTERVAL = 3000;
 
-
-///////////////
-// 장면 세팅 //
-///////////////
+// 장면 세팅
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(BACKGROUND_COLOR);
 
@@ -44,10 +35,7 @@ document.body.appendChild(renderer.domElement);
 const root = new THREE.Group();
 scene.add(root);
 
-
-/////////////////
-// 텍스처 헬퍼 //
-/////////////////
+// 텍스처 헬퍼
 function createCircleTexture(colorHex) {
   const size = 128;
   const canvas = document.createElement('canvas');
@@ -84,12 +72,9 @@ function createGlowTexture(colorHex) {
   return new THREE.CanvasTexture(canvas);
 }
 
-
-////////////////////////////
-// 파티클 생성 (3개 크기) //
-////////////////////////////
+// 파티클 생성
 const TOTAL_PARTICLES = 1000;
-const PARTICLE_SIZES  = [0.02, 0.04, 0.05];
+const PARTICLE_SIZES  = [0.02, 0.03, 0.04];
 const GROUP_COUNT     = Math.floor(TOTAL_PARTICLES / PARTICLE_SIZES.length);
 const circleTex       = createCircleTexture(NORMAL_COLOR_HEX);
 
@@ -127,26 +112,17 @@ for (let gi = 0; gi < PARTICLE_SIZES.length; gi++) {
   particleGroups.push({ geom });
 }
 
-
-////////////////////////////
-// 줌인/줌아웃 리스너 //
-////////////////////////////
+// 줌인/줌아웃 리스너
 window.addEventListener('wheel', e => {
   camera.position.z += e.deltaY * 0.005;
   camera.position.z = THREE.MathUtils.clamp(camera.position.z, 2, 15);
 });
 
-
-///////////////////////////
-// Glow 애니메이션 상태 //
-///////////////////////////
+// Glow 애니메이션 상태
 const glows = [];
 let lastTime = 0;
 
-
-////////////////
-// Glow 트리거 //
-////////////////
+// Glow 트리거
 function triggerGlow() {
   // 랜덤 그룹 + 랜덤 인덱스
   const gi = Math.floor(Math.random() * particleGroups.length);
@@ -189,10 +165,7 @@ function triggerGlow() {
   }, MIN_INTERVAL + Math.random() * (MAX_INTERVAL - MIN_INTERVAL));
 })();
 
-
-/////////////////////
-// 애니메이션 루프 //
-/////////////////////
+// 애니메이션 루프
 function animate(time) {
   requestAnimationFrame(animate);
 
