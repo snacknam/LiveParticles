@@ -3,8 +3,8 @@ const NORMAL_COLOR_HEX = '#2B7FFF';
 
 const GLOW_COLOR_HEX     = '#FF6900';
 const GLOW_SIZE          = 1;
-const GLOW_OPACITY       = 0.7;
-const GLOW_INNER_STOP    = 0.05;
+const GLOW_OPACITY       = 0.8;
+const GLOW_INNER_STOP    = 0.08;
 const GLOW_MID_STOP      = 0.2;
 const GLOW_OUTER_STOP    = 1.0;
 const GLOW_FADE_DURATION = 500;   // fade in/out duration
@@ -71,7 +71,7 @@ function createGlowTexture(colorHex) {
 
 // 파티클 생성
 const TOTAL_PARTICLES = 1000;
-const PARTICLE_SIZES  = [0.02, 0.03, 0.04];
+const PARTICLE_SIZES  = [0.04, 0.06, 0.08];
 const GROUP_COUNT     = Math.floor(TOTAL_PARTICLES / PARTICLE_SIZES.length);
 const circleTex       = createCircleTexture(NORMAL_COLOR_HEX);
 
