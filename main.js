@@ -1,11 +1,11 @@
-const BACKGROUND_COLOR = '#FFFFFF';
-const NORMAL_COLOR_HEX = '#2B7FFF';
+const BACKGROUND_COLOR = '#000000';
+const NORMAL_COLOR_HEX = '#FFFFFF';
 
 const GLOW_COLOR_HEX     = '#FF6900';
 const GLOW_SIZE          = 1;
-const GLOW_OPACITY       = 0.8;
-const GLOW_INNER_STOP    = 0.08;
-const GLOW_MID_STOP      = 0.2;
+const GLOW_OPACITY       = 1;
+const GLOW_INNER_STOP    = 0.03;
+const GLOW_MID_STOP      = 0.1;
 const GLOW_OUTER_STOP    = 1.0;
 const GLOW_FADE_DURATION = 500;   // fade in/out duration
 const GLOW_HOLD_DURATION = 3000;   // full opacity hold
@@ -77,7 +77,7 @@ function createGlowTexture(colorHex) {
 
 // 파티클 생성
 const TOTAL_PARTICLES = 1000;
-const PARTICLE_SIZES  = [0.04, 0.06, 0.08];
+const PARTICLE_SIZES  = [0.01, 0.02, 0.03];
 const GROUP_COUNT     = Math.floor(TOTAL_PARTICLES / PARTICLE_SIZES.length);
 const circleTex       = createCircleTexture(NORMAL_COLOR_HEX);
 
@@ -90,7 +90,7 @@ for (let gi = 0; gi < PARTICLE_SIZES.length; gi++) {
 
   const positions = new Float32Array(count * 3);
   for (let i = 0; i < count; i++) {
-    const r     = THREE.MathUtils.randFloat(1.5, 2.5);
+    const r     = THREE.MathUtils.randFloat(2.5, 2.5);
     const theta = Math.random() * Math.PI * 2;
     const phi   = Math.acos(2 * Math.random() - 1);
     positions[3*i]   = r * Math.sin(phi) * Math.cos(theta);
