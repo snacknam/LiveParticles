@@ -42,7 +42,10 @@ function createCircleTexture(colorHex) {
   ctx.beginPath();
   ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
   ctx.fill();
-  return new THREE.CanvasTexture(canvas);
+  
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
 }
 
 function createGlowTexture(colorHex) {
@@ -66,7 +69,10 @@ function createGlowTexture(colorHex) {
 
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, size, size);
-  return new THREE.CanvasTexture(canvas);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
 }
 
 // 파티클 생성
